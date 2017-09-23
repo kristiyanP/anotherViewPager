@@ -1,0 +1,3 @@
+include ':anotherViewPager-app'
+include ':anotherViewPager'
+project(':anotherViewPager').projectDir = file('../anotherViewPager')
