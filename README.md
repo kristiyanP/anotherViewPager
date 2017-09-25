@@ -2,7 +2,7 @@
 
 # Include in your project
 ```gradle
-   compile 'io.kri:anotherViewPager:1.0'
+compile 'io.kri:anotherViewPager:1.0'
 ```
 
 # How to use
@@ -128,24 +128,24 @@ class MainActivity : AppCompatActivity() {
 ## Further Cutomization
 possible attributes to set to the tabbedViewPager
 ```xml
-    <attr name="tabItemsMarginStart" format="dimension" />
-    <attr name="tabItemsMarginEnd" format="dimension" />
-    <attr name="tabItemsMarginBottom" format="dimension" />
-    <attr name="tabItemsMarginTop" format="dimension" />
-    <attr name="tabSelectedFont" format="reference"/>
-    <attr name="tabDefaultFont" format="reference"/>
-    <attr name="tabSelectedTextColor" />
+<attr name="tabItemsMarginStart" format="dimension" />
+<attr name="tabItemsMarginEnd" format="dimension" />
+<attr name="tabItemsMarginBottom" format="dimension" />
+<attr name="tabItemsMarginTop" format="dimension" />
+<attr name="tabSelectedFont" format="reference"/>
+<attr name="tabDefaultFont" format="reference"/>
+<attr name="tabSelectedTextColor" />
 ```
 
 ## More customizations
 If you want to have another style just implement the following styles, they will overwrite the default ones
 ```xml
-    <style name="TabbedViewPagerStyle">
-    <!-- style for the whole viewPager !-->
-    </style>
+<style name="TabbedViewPagerStyle">
+<!-- style for the whole viewPager !-->
+</style>
 
-    <style name="TabbedViewPagerTabTextStyle">
-    <!-- style for the title !-->
-    </style>
+<style name="TabbedViewPagerTabTextStyle">
+<!-- style for the title !-->
+</style>
 ```
 
