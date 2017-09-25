@@ -108,7 +108,7 @@ class Page1 : TabbedViewPagerItem() {
 ```
 
 ### Set MainAcitivty
-```
+```kotlin
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
