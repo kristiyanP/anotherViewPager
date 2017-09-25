@@ -6,7 +6,6 @@
 ```
 
 # How to use
-
 create layout_page1.xml
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,6 +45,7 @@ create activity_main.xml
 ```
 
 ## In Java or in Kotlin (see below)
+
 ### Create viewPager item
 ```java
 public class Page1 extends TabbedViewPagerItem{
@@ -122,3 +122,30 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
+
+# Style customization
+
+## Further Cutomization
+possible attributes to set to the tabbedViewPager
+```xml
+    <attr name="tabItemsMarginStart" format="dimension" />
+    <attr name="tabItemsMarginEnd" format="dimension" />
+    <attr name="tabItemsMarginBottom" format="dimension" />
+    <attr name="tabItemsMarginTop" format="dimension" />
+    <attr name="tabSelectedFont" format="reference"/>
+    <attr name="tabDefaultFont" format="reference"/>
+    <attr name="tabSelectedTextColor" />
+```
+
+## More customizations
+If you want to have another style just implement the following styles, they will overwrite the default ones
+```xml
+    <style name="TabbedViewPagerStyle">
+    <!-- style for the whole viewPager !-->
+    </style>
+
+    <style name="TabbedViewPagerTabTextStyle">
+    <!-- style for the title !-->
+    </style>
+```
+
