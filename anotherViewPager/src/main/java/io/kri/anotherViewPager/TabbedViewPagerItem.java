@@ -29,7 +29,7 @@ public abstract class TabbedViewPagerItem {
 
     public final void bindItem(Context context, ViewGroup parent) {
         layout = (ViewGroup) LayoutInflater.from(context).inflate(getLayoutResId(), parent, false);
-        bind(context, parent);
+        bind(context, layout);
     }
 
     public View getItem() {

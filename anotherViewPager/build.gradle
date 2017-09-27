@@ -19,7 +19,7 @@ def projectLicenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 def projectKeywords = ['viewpager', 'no fragment', 'view', 'pager', 'tabbed', 'tab']
 def developerFullName = "Kristiyan Petrov"
 group = projectGroup
-version = "1.0"
+version = "1.0.1"
 
 def sdkVersion = 26;
 def toolsVersion = "26.0.1";
