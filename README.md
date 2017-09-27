@@ -2,7 +2,7 @@
 
 # Include in your project
 ```gradle
-compile 'io.kri:anotherViewPager:1.0'
+compile 'io.kri:anotherViewPager:1.0.1'
 ```
 
 # How to use
