@@ -1,4 +1,4 @@
-# AnotherViewPager [![Build Status](https://travis-ci.org/kristiyanP/anotherViewPager.svg?branch=master)](https://travis-ci.org/kristiyanP/anotherViewPager) [![Download](https://api.bintray.com/packages/petrovkristiyan/maven/anotherViewPager/images/download.svg)](https://bintray.com/petrovkristiyan/maven/anotherViewPager/_latestVersion)
+# AnotherViewPager [![Build Status](https://travis-ci.org/kristiyanP/anotherViewPager.svg?branch=master)](https://travis-ci.org/kristiyanP/anotherViewPager) [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16) [![Download](https://api.bintray.com/packages/petrovkristiyan/maven/anotherViewPager/images/download.svg)](https://bintray.com/petrovkristiyan/maven/anotherViewPager/_latestVersion)
 ![preview](https://raw.github.com/kristiyanP/anotherViewPager/master/preview.gif)
 
 # Include in your project
