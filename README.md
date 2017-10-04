@@ -1,5 +1,6 @@
 # AnotherViewPager [![Download](https://api.bintray.com/packages/petrovkristiyan/maven/anotherViewPager/images/download.svg)](https://bintray.com/petrovkristiyan/maven/anotherViewPager/_latestVersion)
 ![preview](https://raw.github.com/kristiyanP/anotherViewPager/master/preview.gif)
+
 # Include in your project
 ```gradle
 compile 'io.kri:anotherViewPager:1.0.1'
