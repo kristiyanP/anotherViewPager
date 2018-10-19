@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'org.jetbrains.dokka-android'
 
 def gitHubUsername = "kristiyanP"
 def gitHubProjectName = "anotherViewPager"
@@ -19,10 +21,7 @@ def projectLicenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 def projectKeywords = ['viewpager', 'no fragment', 'view', 'pager', 'tabbed', 'tab']
 def developerFullName = "Kristiyan Petrov"
 group = projectGroup
-version = "1.0.1"
-
-def sdkVersion = 26;
-def toolsVersion = "26.0.1";
+version = "1.0.2"
 
 android {
     compileSdkVersion sdkVersion
@@ -32,7 +31,7 @@ android {
         targetSdkVersion sdkVersion
         versionCode 1
         versionName version
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -46,13 +45,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:2.+"
-    compile "com.android.support:design:${supportLibVersion}"
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:2.+"
+    implementation 'com.google.android.material:material:1.0.0'
 }
 
 // add the following information to the file: local.properties situated in the parent directory of
@@ -122,30 +124,32 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-task javadoc(type: Javadoc) {
-    title = "$projectName $project.version API"
-    description "Generates Javadoc"
-    source = android.sourceSets.main.java.srcDirs
-    classpath += files(android.bootClasspath)
-    exclude '**/BuildConfig.java', '**/R.java'
-    options {
-        windowTitle("$projectName $project.version Reference")
-        locale = 'en_US'
-        encoding = 'UTF-8'
-        charSet = 'UTF-8'
-        links("http://docs.oracle.com/javase/7/docs/api/");
-        linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference");
-        setMemberLevel(JavadocMemberLevel.PUBLIC)
+task dokkaDoc() {
+    dependsOn createApiDoc("genJavaDoc", "html", "$buildDir/kDoc")
+    dependsOn createApiDoc("genKDoc", "javadoc", "$buildDir/jDoc")
+}
+
+def createApiDoc(def name, def format, def dir) {
+    return tasks.create(name, org.jetbrains.dokka.gradle.DokkaAndroidTask) {
+        outputFormat = format
+        outputDirectory = dir
+        skipEmptyPackages = true // Do not create index pages for empty packages
     }
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
+task jdocJar(type: Jar, dependsOn: dokkaDoc) {
     classifier = 'javadoc'
-    from javadoc.destinationDir
+    from "$buildDir/jDoc"
+}
+
+task kdocJar(type: Jar, dependsOn: dokkaDoc) {
+    classifier = 'kdoc'
+    from "$buildDir/kDoc"
 }
 
 artifacts {
-    archives javadocJar
+    archives kdocJar
+    archives jdocJar
     archives sourcesJar
 }
 

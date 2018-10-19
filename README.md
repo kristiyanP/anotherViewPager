@@ -3,7 +3,7 @@
 
 # Include in your project
 ```gradle
-compile 'io.kri:anotherViewPager:1.0.1'
+implementation 'io.kri:anotherViewPager:1.0.2'
 ```
 
 # How to use
@@ -16,7 +16,7 @@ create layout_page1.xml
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="+@id/title"
         android:text="page1"
         android:layout_width="wrap_content"
@@ -33,8 +33,7 @@ create activity_main.xml
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="io.kri.anotherViewPager.app.MainActivity">
+    android:orientation="vertical">
 
     <io.kri.anotherViewPager.TabbedViewPager
         android:id="@+id/viewPager"
@@ -45,66 +44,19 @@ create activity_main.xml
 </LinearLayout>
 ```
 
-## In Java or in Kotlin (see below)
-
-### Create viewPager item
-```java
-public class Page1 extends TabbedViewPagerItem{
-    @Override
-    public String getTitle() {
-        return "Title Page1";
-    }
-
-    @Override
-    public int getLayoutResId() {
-        return R.layout.layout_page1;
-    }
-
-    @Override
-    protected void bind(Context context, ViewGroup parent) {
-        // customize the look programatically
-        TextView title = parent.findViewById(R.id.title);
-        title.setTextColor(Color.BLUE);
-    }
-}
-```
-
-### Set MainActivity.java
-```java
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        ViewPager viewPager = findViewById(R.id.viewPager);
-        TabbedViewPagerAdapter adapter = new TabbedViewPagerAdapter()
-                .addItem(new Page1());
-
-        viewPager.setAdapter(adapter);
-    }
-}
-```
-
-## In Kotlin
-
 ### Create viewPager item
 ```kotlin
 class Page1 : TabbedViewPagerItem() {
 
-    override fun getTitle(): String {
-        return "Title Page1"
-    }
-
-    override fun getLayoutResId(): Int {
-        return R.layout.page_1
-    }
+    override val title = "Page1"
+    override val layoutResId = R.layout.page_1
 
     override fun bind(context: Context, parent: ViewGroup) {
          // customize the look programatically
-        val title = findViewById(R.id.title)
-        title.setBackgroundColor(Color.BLUE)
+         val title = findViewById(R.id.title)
+         title.setBackgroundColor(Color.BLUE)
     }
+
 }
 ```
 
@@ -121,12 +73,13 @@ class MainActivity : AppCompatActivity() {
 
         viewPager.setAdapter(adapter)
     }
+
 }
 ```
 
 # Style customization
 
-## Further Cutomization
+## Further Customization
 possible attributes to set to the tabbedViewPager
 ```xml
 <attr name="tabItemsMarginStart" format="dimension" />
